@@ -6,6 +6,7 @@ import './pokedex.css';
 class Pokedex extends React.Component {
   constructor() {
     super();
+    // Estado inicial
     this.state = {
       pokemonIndex: 0,
       filteredType: 'all',
@@ -47,12 +48,14 @@ class Pokedex extends React.Component {
       <div className="pokedex">
         <Pokemon pokemon={ pokemon } />
         <div className="pokedex-buttons-panel">
+            {/* Botão All */}
           <Button
             onClick={() => this.filterPokemons('all')}
             className="filter-button"
           >
             All
           </Button>
+        {/* Botão tipos- irá mapear cada tipo e cria um botão que irá representar os tipos */}
           {pokemonTypes.map(type => (
             <Button
               key={ type }
@@ -63,6 +66,7 @@ class Pokedex extends React.Component {
             </Button>
           ))}
         </div>
+        {/* Botão próximo pokemon */}
         <Button
           className="pokedex-button"
           onClick={() => this.nextPokemon(filteredPokemons.length)}

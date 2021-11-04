@@ -6,23 +6,26 @@ import './pokedex.css';
 class Pokedex extends React.Component {
   constructor() {
     super();
-    // Estado inicial
+    // Estado inicial - crio um index para indicar posição e faço com que o estado do tipo do pokemon seja all para conseguir criar um botão e depois mudar através do chave type do objeto.
     this.state = {
       pokemonIndex: 0,
       filteredType: 'all',
     };
   }
 
+//   a mudança do pokemon será seu tipo e index
   filterPokemons(filteredType) {
     this.setState({ filteredType, pokemonIndex: 0 });
   }
 
+//   setar o estado através da adição do index dividido pelo número de pokemons da lista
   nextPokemon(numberOfPokemons) {
     this.setState(state => ({
       pokemonIndex: (state.pokemonIndex + 1) % numberOfPokemons,
     }));
   }
 
+//   capturar os pokemons e filtrar os tipos de pokemon
   fetchFilteredPokemons() {
     const { pokemons } = this.props;
     const { filteredType } = this.state;
@@ -33,6 +36,7 @@ class Pokedex extends React.Component {
     });
   }
 
+//   criar um array novo sem pokemons repetidos e adicionar cada tipo em um array através do reduce
   fetchPokemonTypes() {
     const { pokemons } = this.props;
 
